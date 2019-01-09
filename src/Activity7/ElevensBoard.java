@@ -1,5 +1,8 @@
 package Activity7;
 
+import cardLab.Card;
+import cardLab.Deck;
+
 import java.util.List;
 import java.util.ArrayList;
 
