@@ -1,6 +1,5 @@
 package Activity9;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -74,7 +73,7 @@ public class ElevensBoard extends Board {
     public boolean anotherPlayIsPossible() {
         List<Integer> selectedCards = new ArrayList<>();
         for(int i = 0; i < cards.length; i++){
-            for(int j = i + 1; j < cards.length;i++){
+            for(int j = i + 1; j < cards.length;j++){
                 selectedCards.add(i);
                 selectedCards.add(j);
                 if(isLegal(selectedCards)){
@@ -82,6 +81,12 @@ public class ElevensBoard extends Board {
                 }
             }
             selectedCards.clear();
+        }
+        for(int i = 0; i < cards.length;i++){
+            selectedCards.add(i);
+        }
+        if(containsJQK(selectedCards)){
+            return true;
         }
         return false;
 
