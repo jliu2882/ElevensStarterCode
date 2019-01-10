@@ -1,5 +1,6 @@
 package Activity7;
 
+
 import cardLab.Card;
 import cardLab.Deck;
 
@@ -189,7 +190,30 @@ public class ElevensBoard {
      *         false otherwise.
      */
     public boolean isLegal(List<Integer> selectedCards) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		if(selectedCards.size()==2){
+		    if(cards[selectedCards.get(0)].getPointValue() +
+                    cards[selectedCards.get(1)].getPointValue() == 11){
+		        return true;
+            }
+        }
+        if(selectedCards.size()==3){
+            boolean jack = false, queen = false, king = false;
+            for(int i = 0; i< selectedCards.size();i++){
+                if(cards[selectedCards.get(i)].getRank()=="king"){
+                    king = true;
+                }
+                if(cards[selectedCards.get(i)].getRank()=="queen"){
+                    queen = true;
+                }
+                if(cards[selectedCards.get(i)].getRank()=="jack"){
+                    jack = true;
+                }
+            }
+            if(king && queen && jack){
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

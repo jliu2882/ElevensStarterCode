@@ -1,5 +1,6 @@
 package Activity9;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -55,7 +56,10 @@ public class ElevensBoard extends Board {
      */
     @Override
     public boolean isLegal(List<Integer> selectedCards) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+        if (selectedCards.size() == 2 && containsPairSum11(selectedCards) || selectedCards.size() == 3 && containsJQK(selectedCards)) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -68,7 +72,19 @@ public class ElevensBoard extends Board {
      */
     @Override
     public boolean anotherPlayIsPossible() {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+        List<Integer> selectedCards = new ArrayList<>();
+        for(int i = 0; i < cards.length; i++){
+            for(int j = i + 1; j < cards.length;i++){
+                selectedCards.add(i);
+                selectedCards.add(j);
+                if(isLegal(selectedCards)){
+                    return true;
+                }
+            }
+            selectedCards.clear();
+        }
+        return false;
+
     }
 
     /**
@@ -80,7 +96,11 @@ public class ElevensBoard extends Board {
      *              contain an 11-pair; false otherwise.
      */
     private boolean containsPairSum11(List<Integer> selectedCards) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+        if (cards[selectedCards.get(0)].pointValue() +
+                cards[selectedCards.get(1)].pointValue() == 11) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -92,6 +112,21 @@ public class ElevensBoard extends Board {
      *              include a jack, a queen, and a king; false otherwise.
      */
     private boolean containsJQK(List<Integer> selectedCards) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+        boolean jack = false, queen = false, king = false;
+        for (int i = 0; i < selectedCards.size(); i++) {
+            if (cards[selectedCards.get(i)].rank() == "king") {
+                king = true;
+            }
+            if (cards[selectedCards.get(i)].rank() == "queen") {
+                queen = true;
+            }
+            if (cards[selectedCards.get(i)].rank() == "jack") {
+                jack = true;
+            }
+        }
+        if (king && queen && jack) {
+            return true;
+        }
+        return false;
     }
 }
