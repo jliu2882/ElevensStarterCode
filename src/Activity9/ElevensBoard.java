@@ -104,11 +104,11 @@ public class ElevensBoard extends Board {
         /**
          * Code to change game to accept 10 or 13
          *
-         * if (cards[selectedCards.get(0)].pointValue() + cards[selectedCards.get(1)].pointValue() == 10 ||
-         *        cards[selectedCards.get(0)].pointValue() + cards[selectedCards.get(1)].pointValue() == 13 || ) {
-         *    return true;
-         * }
-         * 
+         if (cards[selectedCards.get(0)].pointValue() + cards[selectedCards.get(1)].pointValue() == 10 ||
+                cards[selectedCards.get(0)].pointValue() + cards[selectedCards.get(1)].pointValue() == 13 || ) {
+            return true;
+         }
+         *
          */
         if (cards[selectedCards.get(0)].pointValue() +
                 cards[selectedCards.get(1)].pointValue() == 11) {
